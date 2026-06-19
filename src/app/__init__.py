@@ -1,0 +1,1 @@
+"""Onklave FastAPI service template."""

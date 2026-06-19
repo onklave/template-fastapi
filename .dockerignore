@@ -1,0 +1,22 @@
+# Keep the build context small + reproducible.
+# NOTE: README.md is intentionally NOT ignored — pyproject.toml references it.
+.git
+.gitignore
+.github
+.editorconfig
+dist
+build
+coverage
+*.log
+.env
+.env.*
+!.env.example
+__pycache__
+*.pyc
+*.egg-info
+.venv
+venv
+.pytest_cache
+.mypy_cache
+tests
+.DS_Store
