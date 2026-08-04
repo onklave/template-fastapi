@@ -1,0 +1,17 @@
+# Onklave deploy manifest — the platform reads this file to build and run this
+# repo: it clones the repo, builds the image in-cluster, and renders the
+# Kubernetes Deployment/Service/Ingress from what is declared here.
+# GitHub Actions is not used and is not consulted at any point in that chain.
+# To add a second service, add another entry under `services`.
+version: 1
+services:
+  - name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    runtime:
+      port: 8000
+      healthPath: /healthz
+    expose:
+      enabled: true
+      path: /

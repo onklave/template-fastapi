@@ -32,11 +32,15 @@ routes via FastAPI's `TestClient`.
 
 ## How Onklave deploys it
 
-Onklave builds this repo from the root **`Dockerfile`** (multi-stage, runs as a
-non-root user) and runs it as a **service**:
+Onklave reads the root **`onklave.yaml`** — that manifest is the deploy
+contract. It declares the build (root **`Dockerfile`**, multi-stage, runs as a
+non-root user) and the runtime:
 
 - Serves on port **8000** (honours `$PORT` if injected).
 - Health route: **`GET /healthz`** → `200`.
+
+Onklave builds, tests and deploys the repo itself; GitHub Actions is not part
+of that chain. To add a second service, add another entry under `services`.
 
 Keep that contract — Dockerfile at root, listen on the port, `/healthz` → 200 —
 and you can extend the app however you like.
