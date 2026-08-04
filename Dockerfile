@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # --- build stage: install the package into a venv ---
-FROM python:3.12-slim AS build
+FROM python:3.13-slim AS build
 WORKDIR /app
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
@@ -10,7 +10,7 @@ COPY src ./src
 RUN pip install --no-cache-dir .
 
 # --- final stage: slim runtime, non-root ---
-FROM python:3.12-slim
+FROM python:3.13-slim
 COPY --from=build /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 ENV PORT=8000
