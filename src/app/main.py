@@ -4,9 +4,12 @@ import os
 
 from fastapi import FastAPI
 
+from app.onklave_setup import setup_onklave
+
 APP_NAME = os.environ.get("APP_NAME", "onklave-fastapi-service")
 
 app = FastAPI(title=APP_NAME)
+setup_onklave(app, service_name=APP_NAME)
 
 
 @app.get("/healthz")
