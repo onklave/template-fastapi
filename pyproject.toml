@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=84.0.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -13,14 +13,14 @@ requires-python = ">=3.12"
 # months from now. Patch/minor security fixes still flow in automatically.
 dependencies = [
   "fastapi>=0.141.1,<1.0",
-  "uvicorn[standard]>=0.52.1,<1.0",
+  "uvicorn[standard]>=0.52.3,<1.0",
 ]
 
 [project.optional-dependencies]
 dev = [
   "pytest>=9.1.1,<10",
   # starlette's TestClient uses httpx2; plain httpx is deprecated there.
-  "httpx2>=2.9.1,<3.0",
+  "httpx2>=2.10.0,<3.0",
 ]
 
 [tool.setuptools.packages.find]
